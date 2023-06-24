@@ -1,5 +1,12 @@
+import Navigation from "../components/Navigation";
+
 function Homepage() {
-  return <div>WorldWide</div>;
+  return (
+    <div>
+      <Navigation />
+      <h1>WorldWise</h1>
+    </div>
+  );
 }
 
 export default Homepage;
