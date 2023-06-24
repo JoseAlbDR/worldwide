@@ -1,4 +1,4 @@
-import Navigation from "../components/Navigation";
+import Navigation from "../components/PageNav";
 
 function Pricing() {
   return (

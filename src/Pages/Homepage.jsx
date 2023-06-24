@@ -1,10 +1,11 @@
-import Navigation from "../components/Navigation";
-
+import Navigation from "../components/PageNav";
+import { Link } from "react-router-dom";
 function Homepage() {
   return (
     <div>
       <Navigation />
       <h1>WorldWise</h1>
+      <Link to="app">Go to the App</Link>
     </div>
   );
 }
