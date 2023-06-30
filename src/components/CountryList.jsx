@@ -12,13 +12,6 @@ function CountryList({ cities, isLoading }) {
       <Message message="Add your first city by clicking on a city on the map" />
     );
 
-  // // Create an array with all countries
-  // const countries = cities.map(({ country }) => country);
-  // // Create an array with unique countries
-  // const uniqueCountry = cities.filter(
-  //   ({ country }, index) => !countries.includes(country, index + 1)
-  // );
-
   const uniqueCountry = _.uniqBy(cities, "country");
 
   return (
