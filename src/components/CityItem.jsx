@@ -9,7 +9,6 @@ const formatDate = (date) =>
   }).format(new Date(date));
 
 function CityItem({ city }) {
-  console.log(city.position);
   return (
     <>
       <li>
