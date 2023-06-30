@@ -2,6 +2,7 @@ import styles from "./CountryList.module.css";
 import Spinner from "./Spinner";
 import Message from "./Message";
 import CountryItem from "./CountryItem";
+import _ from "lodash";
 
 function CountryList({ cities, isLoading }) {
   if (isLoading) return <Spinner />;
@@ -11,12 +12,14 @@ function CountryList({ cities, isLoading }) {
       <Message message="Add your first city by clicking on a city on the map" />
     );
 
-  // Create an array with all countries
-  const countries = cities.map(({ country }) => country);
-  // Create an array with unique countries
-  const uniqueCountry = cities.filter(
-    ({ country }, index) => !countries.includes(country, index + 1)
-  );
+  // // Create an array with all countries
+  // const countries = cities.map(({ country }) => country);
+  // // Create an array with unique countries
+  // const uniqueCountry = cities.filter(
+  //   ({ country }, index) => !countries.includes(country, index + 1)
+  // );
+
+  const uniqueCountry = _.uniqBy(cities, "country");
 
   return (
     <div className={styles.countryList}>
