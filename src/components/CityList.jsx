@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import CityItem from "./CityItem";
 import styles from "./CityList.module.css";
 import Spinner from "./Spinner";
 
@@ -8,8 +9,7 @@ function CityList({ cities, isLoading }) {
   return (
     <ul className={styles.cityList}>
       {cities.map((citie, i) => {
-        console.log(citie);
-        return <li key={i}>{citie.cityName}</li>;
+        return <CityItem key={i} citie={citie} />;
       })}
     </ul>
   );
