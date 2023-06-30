@@ -32,7 +32,7 @@ export default function Login() {
         </div>
 
         <div>
-          <Link to="app" className="cta">
+          <Link to="/app" className="cta">
             Login
           </Link>
         </div>
