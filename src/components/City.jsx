@@ -1,4 +1,6 @@
+import { useParams } from "react-router-dom";
 import styles from "./City.module.css";
+import { useEffect, useState } from "react";
 
 const formatDate = (date) =>
   new Intl.DateTimeFormat("en", {
@@ -9,15 +11,26 @@ const formatDate = (date) =>
   }).format(new Date(date));
 
 function City() {
-  // TEMP DATA
-  const currentCity = {
-    cityName: "Lisbon",
-    emoji: "🇵🇹",
-    date: "2027-10-31T15:59:59.138Z",
-    notes: "My favorite city so far!",
-  };
+  const { id } = useParams();
 
-  const { cityName, emoji, date, notes } = currentCity;
+  const [city, setCity] = useState({});
+
+  useEffect(() => {
+    async function getCity() {
+      try {
+        const res = await fetch(`http://localhost:8000/cities/${id}`);
+        if (!res.ok) throw new Error("Error fetching city.");
+        const city = await res.json();
+        setCity(city);
+        console.log(city);
+      } catch (err) {
+        console.error(err);
+      }
+    }
+    getCity();
+  }, [id]);
+
+  const { cityName, country, date, emoji, notes } = city;
 
   return (
     <div className={styles.city}>
@@ -51,9 +64,7 @@ function City() {
         </a>
       </div>
 
-      <div>
-        <ButtonBack />
-      </div>
+      <div>{/* <ButtonBack /> */}</div>
     </div>
   );
 }
