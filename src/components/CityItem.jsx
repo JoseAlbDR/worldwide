@@ -1,7 +1,7 @@
-function CityItem({ citie }) {
+function CityItem({ city }) {
   return (
     <>
-      <li>{citie.cityName}</li>
+      <li>{city.cityName}</li>
     </>
   );
 }
