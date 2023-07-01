@@ -32,6 +32,7 @@ function CityProvider({ children }) {
         cities,
         isLoading,
         setIsLoading,
+        BASE_URL,
       }}
     >
       {children}

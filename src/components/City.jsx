@@ -1,8 +1,9 @@
-import { useParams, useSearchParams } from "react-router-dom";
 import styles from "./City.module.css";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useCities } from "../context/CityContext";
 import Spinner from "./Spinner";
+import Button from "./Button";
 
 const formatDate = (date) =>
   new Intl.DateTimeFormat("en", {
@@ -13,19 +14,20 @@ const formatDate = (date) =>
   }).format(new Date(date));
 
 function City() {
-  const { isLoading, setIsLoading } = useCities();
+  const { isLoading, setIsLoading, BASE_URL } = useCities();
+  const [city, setCity] = useState({});
   const { id } = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
+
   const lat = searchParams.get("lat");
   const lng = searchParams.get("lng");
-
-  const [city, setCity] = useState({});
 
   useEffect(() => {
     async function getCity() {
       try {
         setIsLoading(true);
-        const res = await fetch(`http://localhost:8000/cities/${id}`);
+        const res = await fetch(`${BASE_URL}/cities/${id}`);
         if (!res.ok) throw new Error("Error fetching city.");
         const city = await res.json();
         setCity(city);
@@ -74,7 +76,15 @@ function City() {
         </a>
       </div>
 
-      <div>{/* <ButtonBack /> */}</div>
+      <Button
+        type="back"
+        onClick={(e) => {
+          e.preventDefault();
+          navigate(-1);
+        }}
+      >
+        &larr; Back
+      </Button>
     </div>
   );
 }
