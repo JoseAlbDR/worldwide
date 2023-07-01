@@ -1,6 +1,8 @@
 import { useParams, useSearchParams } from "react-router-dom";
 import styles from "./City.module.css";
 import { useEffect, useState } from "react";
+import { useCities } from "../context/CityContext";
+import Spinner from "./Spinner";
 
 const formatDate = (date) =>
   new Intl.DateTimeFormat("en", {
@@ -11,6 +13,7 @@ const formatDate = (date) =>
   }).format(new Date(date));
 
 function City() {
+  const { isLoading, setIsLoading } = useCities();
   const { id } = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
   const lat = searchParams.get("lat");
@@ -21,19 +24,23 @@ function City() {
   useEffect(() => {
     async function getCity() {
       try {
+        setIsLoading(true);
         const res = await fetch(`http://localhost:8000/cities/${id}`);
         if (!res.ok) throw new Error("Error fetching city.");
         const city = await res.json();
         setCity(city);
-        console.log(city);
       } catch (err) {
         console.error(err);
+      } finally {
+        setIsLoading(false);
       }
     }
     getCity();
-  }, [id]);
+  }, [id, setIsLoading]);
 
   const { cityName, country, date, emoji, notes } = city;
+
+  if (isLoading) return <Spinner />;
 
   return (
     <div className={styles.city}>
