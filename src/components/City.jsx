@@ -14,8 +14,9 @@ const formatDate = (date) =>
   }).format(new Date(date));
 
 function City() {
-  const { isLoading, setIsLoading, BASE_URL } = useCities();
-  const [city, setCity] = useState({});
+  const { isLoading, setIsLoading, BASE_URL, currentCity, setCurrentCity } =
+    useCities();
+
   const { id } = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
@@ -30,7 +31,7 @@ function City() {
         const res = await fetch(`${BASE_URL}/cities/${id}`);
         if (!res.ok) throw new Error("Error fetching city.");
         const city = await res.json();
-        setCity(city);
+        setCurrentCity(city);
       } catch (err) {
         console.error(err);
       } finally {
@@ -38,9 +39,9 @@ function City() {
       }
     }
     getCity();
-  }, [id, setIsLoading]);
+  }, [id, setIsLoading, BASE_URL]);
 
-  const { cityName, country, date, emoji, notes } = city;
+  const { cityName, date, emoji, notes } = currentCity;
 
   if (isLoading) return <Spinner />;
 
