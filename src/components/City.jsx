@@ -1,9 +1,9 @@
 import styles from "./City.module.css";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useCities } from "../context/CityContext";
 import Spinner from "./Spinner";
-import Button from "./Button";
+
 import BackButton from "./BackButton";
 
 const formatDate = (date) =>
