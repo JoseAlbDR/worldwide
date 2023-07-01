@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useCities } from "../context/CityContext";
 import Spinner from "./Spinner";
 import Button from "./Button";
+import BackButton from "./BackButton";
 
 const formatDate = (date) =>
   new Intl.DateTimeFormat("en", {
@@ -63,15 +64,7 @@ function City() {
         </a>
       </div>
 
-      <Button
-        type="back"
-        onClick={(e) => {
-          e.preventDefault();
-          navigate(-1);
-        }}
-      >
-        &larr; Back
-      </Button>
+      <BackButton />
     </div>
   );
 }
