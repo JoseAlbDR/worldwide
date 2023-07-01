@@ -14,8 +14,7 @@ const formatDate = (date) =>
   }).format(new Date(date));
 
 function City() {
-  const { isLoading, setIsLoading, BASE_URL, currentCity, setCurrentCity } =
-    useCities();
+  const { isLoading, getCity, currentCity } = useCities();
 
   const { id } = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -25,21 +24,8 @@ function City() {
   const lng = searchParams.get("lng");
 
   useEffect(() => {
-    async function getCity() {
-      try {
-        setIsLoading(true);
-        const res = await fetch(`${BASE_URL}/cities/${id}`);
-        if (!res.ok) throw new Error("Error fetching city.");
-        const city = await res.json();
-        setCurrentCity(city);
-      } catch (err) {
-        console.error(err);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-    getCity();
-  }, [id, setIsLoading, BASE_URL]);
+    getCity(id);
+  }, [id]);
 
   const { cityName, date, emoji, notes } = currentCity;
 

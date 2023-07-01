@@ -26,6 +26,20 @@ function CityProvider({ children }) {
     getData();
   }, []);
 
+  async function getCity(id) {
+    try {
+      setIsLoading(true);
+      const res = await fetch(`${BASE_URL}/cities/${id}`);
+      if (!res.ok) throw new Error("Error fetching city.");
+      const city = await res.json();
+      setCurrentCity(city);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
   return (
     // 2) Provide value to children
     <CityContext.Provider
@@ -33,9 +47,8 @@ function CityProvider({ children }) {
         cities,
         isLoading,
         setIsLoading,
-        BASE_URL,
         currentCity,
-        setCurrentCity,
+        getCity,
       }}
     >
       {children}
