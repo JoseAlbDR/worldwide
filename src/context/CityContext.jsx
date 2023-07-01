@@ -2,6 +2,7 @@ import { useEffect, useState, createContext, useContext } from "react";
 
 const BASE_URL = "http://localhost:8000";
 
+// 1) Create context
 const CityContext = createContext();
 function CityProvider({ children }) {
   const [cities, setCities] = useState([]);
@@ -25,10 +26,12 @@ function CityProvider({ children }) {
   }, []);
 
   return (
+    // 2) Provide value to children
     <CityContext.Provider
       value={{
         cities,
         isLoading,
+        setIsLoading,
       }}
     >
       {children}
