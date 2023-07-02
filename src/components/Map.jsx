@@ -11,9 +11,13 @@ function Map() {
   const navigate = useNavigate();
   const { cities } = useCities();
   const [searchParams, setSearchParams] = useSearchParams();
+  const [mapPosition, setMapPosition] = useState([37.1674282, -3.6116593]);
   const mapLat = searchParams.get("lat");
   const mapLng = searchParams.get("lng");
-  const [mapPosition, setMapPosition] = useState([37.1674282, -3.6116593]);
+
+  useEffect(() => {
+    if (mapLat && mapLng) setMapPosition([mapLat, mapLng]);
+  }, [mapLat, mapLng]);
 
   // const {
   //   isLoading,
@@ -50,7 +54,7 @@ function Map() {
             </Marker>
           );
         })}
-        <ChangeCenter position={[mapLat || 40, mapLng || 0]} />
+        <ChangeCenter position={mapPosition} />
       </MapContainer>
     </div>
   );
