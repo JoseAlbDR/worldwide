@@ -29,7 +29,7 @@ function Map() {
         />
         {cities.map((city) => {
           return (
-            <Marker key={city.cityName} position={city.position}>
+            <Marker key={city.id} position={city.position}>
               <Popup>
                 A pretty CSS3 popup. <br /> Easily customizable.
               </Popup>
