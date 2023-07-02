@@ -3,6 +3,7 @@ import styles from "./Map.module.css";
 import { MapContainer, Marker, TileLayer, Popup } from "react-leaflet";
 import { useState } from "react";
 import "leaflet/dist/images/marker-shadow.png";
+import { Browser } from "leaflet";
 
 function Map() {
   const navigate = useNavigate();
@@ -10,7 +11,16 @@ function Map() {
   const lat = searchParams.get("lat");
   const lng = searchParams.get("lng");
 
-  const [position, setPosition] = useState([40, 0]);
+  const [position, setPosition] = useState([37.1674282, -3.6116593]);
+  const successCallback = (position) => {
+    console.log(position);
+  };
+
+  const errorCallback = (error) => {
+    console.log(error);
+  };
+
+  navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
   return (
     <div className={styles.mapContainer} onClick={() => navigate("form")}>
       <MapContainer
