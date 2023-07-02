@@ -20,6 +20,7 @@ function Map() {
   const [mapPosition, setMapPosition] = useState([37.1674282, -3.6116593]);
   const mapLat = searchParams.get("lat");
   const mapLng = searchParams.get("lng");
+
   useEffect(() => {
     if (mapLat && mapLng) setMapPosition([mapLat, mapLng]);
   }, [mapLat, mapLng]);
@@ -63,7 +64,10 @@ function ChangeCenter({ position }) {
 function DetectClick() {
   const navigate = useNavigate();
   useMapEvent({
-    click: (e) => navigate("form"),
+    click: (e) => {
+      const { lat, lng } = e.latlng;
+      navigate(`form?lat=${lat}&lng=${lng}`);
+    },
   });
 }
 
