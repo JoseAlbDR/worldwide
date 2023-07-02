@@ -10,7 +10,7 @@ import { useGeolocation } from "../hooks/useGeolocation";
 function Map() {
   const navigate = useNavigate();
   const { cities } = useCities();
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const [mapPosition, setMapPosition] = useState([37.1674282, -3.6116593]);
   const mapLat = searchParams.get("lat");
   const mapLng = searchParams.get("lng");
@@ -18,18 +18,6 @@ function Map() {
   useEffect(() => {
     if (mapLat && mapLng) setMapPosition([mapLat, mapLng]);
   }, [mapLat, mapLng]);
-
-  // const {
-  //   isLoading,
-  //   position: currPosition,
-  //   error,
-  //   getPosition,
-  // } = useGeolocation();
-
-  // useEffect(() => {
-  //   getPosition();
-  // }, []);
-  // console.log(currPosition);
 
   return (
     <div className={styles.mapContainer} onClick={() => navigate("form")}>
