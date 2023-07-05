@@ -53,6 +53,7 @@ function CityProvider({ children }) {
       if (!res.ok) throw new Error("Error saving city.");
       const city = await res.json();
       setCities((cities) => [...cities, city]);
+      setCurrentCity(city);
     } catch (err) {
       console.error(err);
     } finally {
