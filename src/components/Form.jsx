@@ -5,7 +5,8 @@ import styles from "./Form.module.css";
 import Button from "./Button";
 import BackButton from "./BackButton";
 import { useUrlPosition } from "../hooks/useUrlPosition";
-
+import Message from "./Message";
+import Spinner from "./Spinner";
 export function convertToEmoji(countryCode) {
   const codePoints = countryCode
     .toUpperCase()
@@ -23,6 +24,7 @@ function Form() {
   const [notes, setNotes] = useState("");
   const [lat, lng] = useUrlPosition();
   const [isLoadingGeocoding, setIsLoadingGeocoding] = useState(false);
+  const [geocodingError, setGeocodingError] = useState("");
 
   const [emoji, setEmoji] = useState("");
 
@@ -30,15 +32,20 @@ function Form() {
     async function fetchCityData() {
       try {
         setIsLoadingGeocoding(true);
+        setGeocodingError("");
         const response = await fetch(
           `${BASE_URL}?latitude=${lat}&longitude=${lng}`
         );
         const data = await response.json();
+        if (!data.countryCode) {
+          throw new Error("City or locality not found, click somewhere else!");
+        }
         setCityName(data.city || data.locality || "");
         setCountry(data.countryName || "");
         setEmoji(convertToEmoji(data.countryCode));
       } catch (e) {
         console.log(e);
+        setGeocodingError(e.message);
       } finally {
         setIsLoadingGeocoding(false);
       }
@@ -46,6 +53,13 @@ function Form() {
     fetchCityData();
   }, [lat, lng]);
 
+  if (geocodingError) {
+    return <Message message={geocodingError} />;
+  }
+
+  if (isLoadingGeocoding) {
+    return <Spinner />;
+  }
   return (
     <form className={styles.form}>
       <div className={styles.row}>
