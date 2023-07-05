@@ -37,16 +37,16 @@
       "id": 98443197
     },
     {
-      "cityName": "Linards",
-      "countryCode": "France",
-      "emoji": "🇫🇷",
-      "date": "2023-07-05T12:59:43.337Z",
+      "cityName": "La Calzada de Calatrava",
+      "countryCode": "Spain",
+      "emoji": "🇪🇸",
+      "date": "2023-07-05T13:36:53.796Z",
       "notes": "",
       "position": {
-        "lat": "45.690832836458185",
-        "lng": "1.5380859375000002"
+        "lat": "38.548165423046584",
+        "lng": "-3.8671875000000004"
       },
-      "id": 98443200
+      "id": 98443198
     }
   ]
 }

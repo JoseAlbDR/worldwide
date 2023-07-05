@@ -1,26 +1,62 @@
-import { useEffect, useState, createContext, useContext } from "react";
+import { useEffect, createContext, useContext, useReducer } from "react";
 
 const BASE_URL = "http://localhost:8000";
 
 // 1) Create context
 const CityContext = createContext();
-function CityProvider({ children }) {
-  const [cities, setCities] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [currentCity, setCurrentCity] = useState({});
 
+const initialState = {
+  cities: [],
+  isLoading: false,
+  currentCity: {},
+};
+
+function reducer(state, action) {
+  switch (action.type) {
+    case "setCities":
+      return {
+        ...state,
+        cities: action.payload,
+      };
+    case "setCurrentCity":
+      return {
+        ...state,
+        currentCity: action.payload,
+      };
+    case "addCity":
+      return {
+        cities: [...state.cities, action.payload],
+      };
+    case "deleteCity":
+      return {
+        cities: state.cities.filter((city) => city.id !== action.payload),
+      };
+    case "setLoading":
+      return {
+        ...state,
+        isLoading: action.payload,
+      };
+    default:
+      throw new Error();
+  }
+}
+
+function CityProvider({ children }) {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  const { cities, isLoading, currentCity } = state;
   useEffect(() => {
     async function getData() {
       try {
-        setIsLoading(true);
+        dispatch({ type: "setLoading", payload: true });
         const res = await fetch(`${BASE_URL}/cities`);
         if (!res.ok) throw new Error("Error fetching data.");
         const citiesData = await res.json();
-        setCities(citiesData);
+        dispatch({ type: "setCities", payload: citiesData });
       } catch (err) {
         console.error(err);
       } finally {
-        setIsLoading(false);
+        dispatch({ type: "setLoading", payload: false });
       }
     }
     getData();
@@ -28,21 +64,21 @@ function CityProvider({ children }) {
 
   async function getCity(id) {
     try {
-      setIsLoading(true);
+      dispatch({ type: "setLoading", payload: true });
       const res = await fetch(`${BASE_URL}/cities/${id}`);
       if (!res.ok) throw new Error("Error fetching city.");
       const city = await res.json();
-      setCurrentCity(city);
+      dispatch({ type: "setCurrentCity", payload: city });
     } catch (err) {
       console.error(err);
     } finally {
-      setIsLoading(false);
+      dispatch({ type: "setLoading", payload: false });
     }
   }
 
   async function saveCity(newCity) {
     try {
-      setIsLoading(true);
+      dispatch({ type: "setLoading", payload: true });
       const res = await fetch(`${BASE_URL}/cities/`, {
         method: "POST",
         headers: {
@@ -52,18 +88,18 @@ function CityProvider({ children }) {
       });
       if (!res.ok) throw new Error("Error saving city.");
       const city = await res.json();
-      setCities((cities) => [...cities, city]);
-      setCurrentCity(city);
+      dispatch({ type: "addCity", payload: city });
+      dispatch({ type: "setCurrentCity", payload: city });
     } catch (err) {
       console.error(err);
     } finally {
-      setIsLoading(false);
+      dispatch({ type: "setLoading", payload: false });
     }
   }
 
   async function deleteCity(id) {
     try {
-      setIsLoading(true);
+      dispatch({ type: "setLoading", payload: true });
       const res = await fetch(`${BASE_URL}/cities/${id}`, {
         method: "DELETE",
         headers: {
@@ -71,11 +107,11 @@ function CityProvider({ children }) {
         },
       });
       if (!res.ok) throw new Error("Error deleting city.");
-      setCities((cities) => cities.filter((city) => city.id !== id));
+      dispatch({ type: "deleteCity", payload: id });
     } catch (err) {
       console.error(err);
     } finally {
-      setIsLoading(false);
+      dispatch({ type: "setLoading", payload: false });
     }
   }
 
@@ -85,7 +121,7 @@ function CityProvider({ children }) {
       value={{
         cities,
         isLoading,
-        setIsLoading,
+        dispatch,
         currentCity,
         getCity,
         saveCity,
