@@ -9,6 +9,7 @@ const initialState = {
   cities: [],
   isLoading: false,
   currentCity: {},
+  error: "",
 };
 
 function reducer(state, action) {
@@ -40,6 +41,12 @@ function reducer(state, action) {
         cities: state.cities.filter((city) => city.id !== action.payload),
         isLoading: false,
       };
+    case "error":
+      return {
+        ...state,
+        error: action.payload,
+        isLoading: false,
+      };
     default:
       throw new Error("Unknown action type");
   }
@@ -48,7 +55,7 @@ function reducer(state, action) {
 function CityProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const { cities, isLoading, currentCity } = state;
+  const { cities, isLoading, currentCity, error } = state;
   useEffect(() => {
     async function getData() {
       try {
@@ -59,6 +66,7 @@ function CityProvider({ children }) {
         dispatch({ type: "cities/loaded", payload: citiesData });
       } catch (err) {
         console.error(err);
+        dispatch({ type: "error", payload: err.message });
       }
     }
     getData();
@@ -73,6 +81,7 @@ function CityProvider({ children }) {
       dispatch({ type: "currentCity/changed", payload: city });
     } catch (err) {
       console.error(err);
+      dispatch({ type: "error", payload: err.message });
     }
   }
 
@@ -92,6 +101,7 @@ function CityProvider({ children }) {
       dispatch({ type: "currentCity/changed", payload: city });
     } catch (err) {
       console.error(err);
+      dispatch({ type: "error", payload: err.message });
     }
   }
 
@@ -108,6 +118,7 @@ function CityProvider({ children }) {
       dispatch({ type: "cities/deleted", payload: id });
     } catch (err) {
       console.error(err);
+      dispatch({ type: "error", payload: err.message });
     }
   }
 
@@ -121,6 +132,7 @@ function CityProvider({ children }) {
         getCity,
         saveCity,
         deleteCity,
+        error,
       }}
     >
       {children}
