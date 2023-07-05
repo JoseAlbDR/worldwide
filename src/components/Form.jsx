@@ -76,12 +76,6 @@ function Form() {
 
     await saveCity(newCity);
     navigate("/app/cities");
-    setCityName("");
-    setCountry("");
-    setDate(new Date());
-    setNotes("");
-    setEmoji("");
-    setGeocodingError("");
   }
 
   if (geocodingError) {

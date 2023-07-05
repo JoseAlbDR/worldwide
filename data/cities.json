@@ -35,6 +35,54 @@
         "lng": 13.376933665713324
       },
       "id": 98443197
+    },
+    {
+      "cityName": "Loja",
+      "countryCode": "Spain",
+      "emoji": "🇪🇸",
+      "date": "2023-07-05T12:56:00.172Z",
+      "notes": "",
+      "position": {
+        "lat": "37.09023980307208",
+        "lng": "-4.262695312500001"
+      },
+      "id": 98443198
+    },
+    {
+      "cityName": "La Muela",
+      "countryCode": "Spain",
+      "emoji": "🇪🇸",
+      "date": "2023-07-05T12:57:41.310Z",
+      "notes": "",
+      "position": {
+        "lat": "41.60722821271717",
+        "lng": "-1.1425781250000002"
+      },
+      "id": 98443199
+    },
+    {
+      "cityName": "Linards",
+      "countryCode": "France",
+      "emoji": "🇫🇷",
+      "date": "2023-07-05T12:59:43.337Z",
+      "notes": "",
+      "position": {
+        "lat": "45.690832836458185",
+        "lng": "1.5380859375000002"
+      },
+      "id": 98443200
+    },
+    {
+      "cityName": "Barry-d'Islemade",
+      "countryCode": "France",
+      "emoji": "🇫🇷",
+      "date": "2023-07-05T13:07:42.526Z",
+      "notes": "",
+      "position": {
+        "lat": "44.071800467511565",
+        "lng": "1.2744140625000002"
+      },
+      "id": 98443201
     }
   ]
 }
