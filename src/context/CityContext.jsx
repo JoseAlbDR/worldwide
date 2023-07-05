@@ -31,15 +31,19 @@ function reducer(state, action) {
         currentCity: action.payload,
         isLoading: false,
       };
-    case "cities/created":
+    case "city/created":
       return {
+        ...state,
         cities: [...state.cities, action.payload],
+        currentCity: action.payload,
         isLoading: false,
       };
-    case "cities/deleted":
+    case "city/deleted":
       return {
+        ...state,
         cities: state.cities.filter((city) => city.id !== action.payload),
         isLoading: false,
+        currentCity: {},
       };
     case "error":
       return {
@@ -97,8 +101,7 @@ function CityProvider({ children }) {
       });
       if (!res.ok) throw new Error("Error saving city.");
       const city = await res.json();
-      dispatch({ type: "cities/created", payload: city });
-      dispatch({ type: "currentCity/changed", payload: city });
+      dispatch({ type: "city/created", payload: city });
     } catch (err) {
       console.error(err);
       dispatch({ type: "error", payload: err.message });
@@ -115,7 +118,7 @@ function CityProvider({ children }) {
         },
       });
       if (!res.ok) throw new Error("Error deleting city.");
-      dispatch({ type: "cities/deleted", payload: id });
+      dispatch({ type: "city/deleted", payload: id });
     } catch (err) {
       console.error(err);
       dispatch({ type: "error", payload: err.message });

@@ -37,28 +37,16 @@
       "id": 98443197
     },
     {
-      "cityName": "La Calzada de Calatrava",
+      "cityName": "Santo Tome",
       "countryCode": "Spain",
       "emoji": "🇪🇸",
-      "date": "2023-07-05T13:36:53.796Z",
+      "date": "2023-07-05T14:01:51.277Z",
       "notes": "",
       "position": {
-        "lat": "38.548165423046584",
-        "lng": "-3.8671875000000004"
+        "lat": "38.013476231041935",
+        "lng": "-3.0761718750000004"
       },
       "id": 98443198
-    },
-    {
-      "cityName": "Santibanez de Vidriales",
-      "countryCode": "Spain",
-      "emoji": "🇪🇸",
-      "date": "2023-07-05T13:39:15.307Z",
-      "notes": "",
-      "position": {
-        "lat": "42.09822241118974",
-        "lng": "-5.954589843750001"
-      },
-      "id": 98443199
     }
   ]
 }
