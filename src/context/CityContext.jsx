@@ -13,25 +13,25 @@ const initialState = {
 
 function reducer(state, action) {
   switch (action.type) {
-    case "setCities":
+    case "cities/loaded":
       return {
         ...state,
         cities: action.payload,
       };
-    case "setCurrentCity":
+    case "currentCity/changed":
       return {
         ...state,
         currentCity: action.payload,
       };
-    case "addCity":
+    case "cities/created":
       return {
         cities: [...state.cities, action.payload],
       };
-    case "deleteCity":
+    case "cities/deleted":
       return {
         cities: state.cities.filter((city) => city.id !== action.payload),
       };
-    case "setLoading":
+    case "loading/changed":
       return {
         ...state,
         isLoading: action.payload,
@@ -48,15 +48,15 @@ function CityProvider({ children }) {
   useEffect(() => {
     async function getData() {
       try {
-        dispatch({ type: "setLoading", payload: true });
+        dispatch({ type: "loading/changed", payload: true });
         const res = await fetch(`${BASE_URL}/cities`);
         if (!res.ok) throw new Error("Error fetching data.");
         const citiesData = await res.json();
-        dispatch({ type: "setCities", payload: citiesData });
+        dispatch({ type: "cities/loaded", payload: citiesData });
       } catch (err) {
         console.error(err);
       } finally {
-        dispatch({ type: "setLoading", payload: false });
+        dispatch({ type: "loading/changed", payload: false });
       }
     }
     getData();
@@ -64,21 +64,21 @@ function CityProvider({ children }) {
 
   async function getCity(id) {
     try {
-      dispatch({ type: "setLoading", payload: true });
+      dispatch({ type: "loading/changed", payload: true });
       const res = await fetch(`${BASE_URL}/cities/${id}`);
       if (!res.ok) throw new Error("Error fetching city.");
       const city = await res.json();
-      dispatch({ type: "setCurrentCity", payload: city });
+      dispatch({ type: "currentCity/changed", payload: city });
     } catch (err) {
       console.error(err);
     } finally {
-      dispatch({ type: "setLoading", payload: false });
+      dispatch({ type: "loading/changed", payload: false });
     }
   }
 
   async function saveCity(newCity) {
     try {
-      dispatch({ type: "setLoading", payload: true });
+      dispatch({ type: "loading/changed", payload: true });
       const res = await fetch(`${BASE_URL}/cities/`, {
         method: "POST",
         headers: {
@@ -88,18 +88,18 @@ function CityProvider({ children }) {
       });
       if (!res.ok) throw new Error("Error saving city.");
       const city = await res.json();
-      dispatch({ type: "addCity", payload: city });
-      dispatch({ type: "setCurrentCity", payload: city });
+      dispatch({ type: "cities/created", payload: city });
+      dispatch({ type: "currentCity/changed", payload: city });
     } catch (err) {
       console.error(err);
     } finally {
-      dispatch({ type: "setLoading", payload: false });
+      dispatch({ type: "loading/changed", payload: false });
     }
   }
 
   async function deleteCity(id) {
     try {
-      dispatch({ type: "setLoading", payload: true });
+      dispatch({ type: "loading/changed", payload: true });
       const res = await fetch(`${BASE_URL}/cities/${id}`, {
         method: "DELETE",
         headers: {
@@ -107,11 +107,11 @@ function CityProvider({ children }) {
         },
       });
       if (!res.ok) throw new Error("Error deleting city.");
-      dispatch({ type: "deleteCity", payload: id });
+      dispatch({ type: "cities/deleted", payload: id });
     } catch (err) {
       console.error(err);
     } finally {
-      dispatch({ type: "setLoading", payload: false });
+      dispatch({ type: "loading/changed", payload: false });
     }
   }
 
@@ -121,7 +121,6 @@ function CityProvider({ children }) {
       value={{
         cities,
         isLoading,
-        dispatch,
         currentCity,
         getCity,
         saveCity,
