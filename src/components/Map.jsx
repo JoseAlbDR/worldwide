@@ -10,7 +10,7 @@ import {
 } from "react-leaflet";
 import { useEffect, useState } from "react";
 import "leaflet/dist/images/marker-shadow.png";
-import { Browser } from "leaflet";
+import Button from "./Button";
 import { useCities } from "../context/CityContext";
 import { useGeolocation } from "../hooks/useGeolocation";
 
@@ -18,6 +18,13 @@ function Map() {
   const { cities } = useCities();
   const [searchParams] = useSearchParams();
   const [mapPosition, setMapPosition] = useState([37.1674282, -3.6116593]);
+
+  const {
+    isLoading: isLoadingPosition,
+    position: geolocationPosition,
+    getPosition,
+  } = useGeolocation();
+
   const mapLat = searchParams.get("lat");
   const mapLng = searchParams.get("lng");
 
@@ -25,8 +32,18 @@ function Map() {
     if (mapLat && mapLng) setMapPosition([mapLat, mapLng]);
   }, [mapLat, mapLng]);
 
+  useEffect(() => {
+    console.log(geolocationPosition);
+    if (geolocationPosition) {
+      setMapPosition([geolocationPosition.lat, geolocationPosition.lng]);
+    }
+  }, [geolocationPosition]);
+
   return (
     <div className={styles.mapContainer}>
+      <Button type="position" onClick={getPosition}>
+        {isLoadingPosition ? "Loading..." : "Get Current Position"}
+      </Button>
       <MapContainer
         center={mapPosition}
         // center={[mapLat, mapLng]}
