@@ -40,6 +40,7 @@ function AuthProvider({ children }) {
 
   function logout() {
     dispatch({ type: "logout" });
+    console.log(isAuthenticated);
   }
 
   return (
