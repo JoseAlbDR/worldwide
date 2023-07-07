@@ -1,7 +1,7 @@
 # WorldWise
 
 <p align="center">
-  <img src="https://github.com/JoseAlbDR/worldwide/blob/main/public/logo.png" alt="WorldWise Logo" width="200" height="200">
+  <img src="https://github.com/JoseAlbDR/worldwide/blob/main/public/logo.png" alt="WorldWise Logo">
 </p>
 
 WorldWise is a web application developed with React that allows you to track the cities you have visited around the world. You can mark cities on an interactive map, add notes and visit dates, and explore visited cities by country.
