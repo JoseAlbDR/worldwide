@@ -13,6 +13,7 @@ dist
 dist-ssr
 *.local
 .env
+apitest.http
 
 # Editor directories and files
 .vscode/*
