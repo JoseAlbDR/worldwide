@@ -15,9 +15,9 @@ You can see a live demo of the application at [WorldWise Demo]([https://worldwis
 Below are some screenshots of the application:
 
 <p align="center">
-  <img src="https://github.com/JoseAlbDR/worldwide/blob/netlify/public/WorldWise.PNG" alt="Screenshot 1" width="400">
-  <img src="screenshots/screenshot2.png" alt="Screenshot 2" width="400">
-  <img src="screenshots/screenshot3.png" alt="Screenshot 3" width="400">
+  <img src="https://github.com/JoseAlbDR/worldwide/blob/netlify/public/WorldWise.PNG" alt="Worldwise" width="400">
+  <img src="https://github.com/JoseAlbDR/worldwide/blob/netlify/public/WorldWise2.PNG" alt="Worldwise" width="400">
+  <img src="https://github.com/JoseAlbDR/worldwide/blob/netlify/public/WorldWise2.PNG" alt="Worldwise" width="400">
 </p>
 
 ## Features
