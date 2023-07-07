@@ -17,7 +17,7 @@ Below are some screenshots of the application:
 <p align="center">
   <img src="https://github.com/JoseAlbDR/worldwide/blob/netlify/public/WorldWise.PNG" alt="Worldwise" width="400" height="200">
   <img src="https://github.com/JoseAlbDR/worldwide/blob/netlify/public/WorldWise2.PNG" alt="Worldwise" width="400" height="200">
-  <img src="https://github.com/JoseAlbDR/worldwide/blob/netlify/public/WorldWise2.PNG" alt="Worldwise" width="400" height="200">
+  <img src="https://github.com/JoseAlbDR/worldwide/blob/netlify/public/WorldWise3.PNG" alt="Worldwise" width="400" height="200">
 </p>
 
 ## Features
