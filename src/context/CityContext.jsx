@@ -6,7 +6,7 @@ import {
   useCallback,
 } from "react";
 
-const BASE_URL = "http://localhost:8888/";
+const BASE_URL = "http://localhost:8888/.netlify/functions";
 
 // http://localhost:8888/.netlify/functions/addCity
 
@@ -74,6 +74,7 @@ function CityProvider({ children }) {
         dispatch({ type: "loading" });
         const res = await fetch(`${BASE_URL}/cities`);
         if (!res.ok) throw new Error("Error fetching data.");
+
         const citiesData = await res.json();
         dispatch({ type: "cities/loaded", payload: citiesData });
       } catch (err) {
@@ -105,7 +106,7 @@ function CityProvider({ children }) {
   async function saveCity(newCity) {
     try {
       dispatch({ type: "loading" });
-      const res = await fetch(`${BASE_URL}.netlify/functions/addCity`, {
+      const res = await fetch(`${BASE_URL}/addCity`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -114,6 +115,7 @@ function CityProvider({ children }) {
       });
       if (!res.ok) throw new Error("Error saving city.");
       const city = await res.json();
+      console.log(city);
       dispatch({ type: "city/created", payload: city });
     } catch (err) {
       console.error(err);
