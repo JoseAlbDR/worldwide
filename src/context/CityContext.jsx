@@ -6,9 +6,7 @@ import {
   useCallback,
 } from "react";
 
-const BASE_URL = "http://localhost:8888/.netlify/functions";
-
-// http://localhost:8888/.netlify/functions/addCity
+const BASE_URL = "https://jadr-worldwide.netlify.app/.netlify/functions";
 
 // 1) Create context
 const CityContext = createContext();
@@ -115,7 +113,6 @@ function CityProvider({ children }) {
       });
       if (!res.ok) throw new Error("Error saving city.");
       const city = await res.json();
-      console.log(city);
       dispatch({ type: "city/created", payload: city });
     } catch (err) {
       console.error(err);
