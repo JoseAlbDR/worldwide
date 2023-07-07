@@ -8,7 +8,7 @@ WorldWise is a web application developed with React that allows you to track the
 
 ## Demo
 
-You can see a live demo of the application at [WorldWise Demo]([https://worldwise-demo.com](https://worldwise.jadelgadorobles.com/)).
+You can see a live demo of the application at [WorldWise Demo](https://worldwise-demo.com](https://worldwise.jadelgadorobles.com/)).
 
 ## Screenshots
 
