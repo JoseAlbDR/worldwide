@@ -16,6 +16,7 @@ function SearchBar() {
       navigate(`form?lat=${lat}&lng=${lng}`);
     } catch (err) {
       console.error(err.message);
+      setQuery("");
     }
   }
 
