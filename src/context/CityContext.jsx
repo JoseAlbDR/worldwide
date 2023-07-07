@@ -7,7 +7,7 @@ import {
 } from "react";
 
 const BASE_URL = "https://jadr-worldwide.netlify.app/.netlify/functions";
-
+const DEV_BASE_URL = "http://localhost:8888/.netlify/functions";
 // 1) Create context
 const CityContext = createContext();
 
@@ -83,6 +83,20 @@ function CityProvider({ children }) {
     listCities();
   }, []);
 
+  async function searchCity(query) {
+    try {
+      // dispatch({ type: "loading" });
+      const res = await fetch(`${DEV_BASE_URL}/searchCity?name=${query}`);
+      if (!res.ok) throw new Error("Error fetching city.");
+      const coords = await res.json();
+      return coords;
+      // dispatch({ type: "currentCity/changed", payload: city });
+    } catch (err) {
+      console.error(err);
+      dispatch({ type: "error", payload: err.message });
+    }
+  }
+
   const getCity = useCallback(
     async function getCity(id) {
       if (+id === currentCity.id) return;
@@ -147,6 +161,7 @@ function CityProvider({ children }) {
         getCity,
         saveCity,
         deleteCity,
+        searchCity,
         error,
       }}
     >
