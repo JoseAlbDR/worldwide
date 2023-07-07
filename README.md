@@ -74,4 +74,52 @@ Make sure you have Node.js and npm installed on your machine.
 
    ```bash
    git clone https://github.com/your-username/worldwise.git
-```
+
+2. Navigate to the project directory:
+
+   ```bash
+   cd worldwise
+
+3. Install the dependencies:
+
+  ```bash
+  npm install
+
+### Local Development
+
+#### In branch main
+
+1. Start the JSON server for simulating the REST API:
+
+  ```bash
+  npm run server
+
+2. In a separate terminal, start the development server:
+
+  ```bash
+  npm run dev
+
+3. Open your browser and visit http://localhost:3000 to see the application running.
+
+
+### Deployment
+
+#### In branch netlify
+
+The application can be deployed using Netlify. Make sure to set up the required environment variables in the Netlify project settings.
+
+  ```javascript
+  FAUNA_API_KEY=<FAUNADB_API_KEY>
+  OW_API_KEY=<OPENWEATHER_API_KEY>
+
+1. Build the project:
+
+  ```bash
+  npm run build
+
+2. Deploy the generated dist/ directory using Netlify CLI or by linking your repository to a Netlify project.
+
+  ```bash
+netlify deploy --prod
+
+
