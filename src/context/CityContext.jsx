@@ -72,7 +72,6 @@ function CityProvider({ children }) {
         dispatch({ type: "loading" });
         const res = await fetch(`${BASE_URL}/listCities`);
         if (!res.ok) throw new Error("Error fetching data.");
-
         const citiesData = await res.json();
         dispatch({ type: "cities/loaded", payload: citiesData });
       } catch (err) {
@@ -85,12 +84,10 @@ function CityProvider({ children }) {
 
   async function searchCity(query) {
     try {
-      // dispatch({ type: "loading" });
       const res = await fetch(`${DEV_BASE_URL}/searchCity?name=${query}`);
       if (!res.ok) throw new Error("Error fetching city.");
       const coords = await res.json();
       return coords;
-      // dispatch({ type: "currentCity/changed", payload: city });
     } catch (err) {
       console.error(err);
       dispatch({ type: "error", payload: err.message });
