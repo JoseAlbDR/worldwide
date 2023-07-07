@@ -1,3 +1,5 @@
+# worldwide
+SPA to save your visited countries done with React
 # WorldWise
 
 <p align="center">
@@ -22,7 +24,6 @@ Below are some screenshots of the application:
 
 ## Features
 
-✅ Fake user Authentication 
 ✅ Secure navigation through protected routes.  
 ✅ Homepage with an overview of the application and a link to log in.  
 ✅ Pricing page showing available plans.  
@@ -59,5 +60,97 @@ The project uses the following npm dependencies:
 - `react` and `react-dom`: Core React libraries for building user interfaces.
 - `react-datepicker`: Date picker component used in the application's form.
 - `react-router-dom`: Library for application routing using React's component-based approach.
+
+## Serverless API Functions
+
+The application makes use of Serverless API functions to handle certain functionalities. These functions are responsible for interacting with the database and retrieving data from external APIs. Here is an overview of the available functions:
+
+- **Create City:** Creates a new city record in the database.
+- **Delete City:** Deletes a city record from the database.
+- **Get City by ID:** Retrieves a city record from the database based on its ID.
+- **List Cities:** Retrieves a list of all cities from the database.
+- **Get City Coordinates:** Retrieves the coordinates (latitude and longitude) of a city using the OpenWeatherMap API.
+
+These functions are implemented using Netlify Functions and are triggered by specific API endpoints. They provide the necessary backend functionality for the application to manage city data and retrieve additional information.
+
+## Getting Started
+
+### Prerequisites
+
+Make sure you have Node.js and npm installed on your machine.
+
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/your-username/worldwise.git
+
+2. Navigate to the project directory:
+
+   ```bash
+   cd worldwise
+
+3. Install the dependencies:
+
+    ```bash
+    npm install
+
+### Local Development
+
+#### In branch main
+
+1. Start the JSON server for simulating the REST API:
+
+    ```bash
+    npm run server
+
+2. In a separate terminal, start the development server:
+
+    ```bash
+    npm run dev
+
+3. Open your browser and visit http://localhost:3000 to see the application running.
+
+
+### Deployment
+
+#### In branch netlify
+
+The application can be deployed using Netlify. Make sure to set up the required environment variables in the Netlify project settings and in .env file.
+
+    FAUNA_API_KEY=<FAUNADB_API_KEY>
+    OW_API_KEY=<OPENWEATHER_API_KEY>
+
+1. Build the project:
+
+    ```bash
+    npm run build
+
+2. Deploy the generated dist/ directory using Netlify CLI or by linking your repository to a Netlify project.
+
+    ```bash
+    netlify deploy --prod
+
+## Contribution
+
+If you want to contribute to this project here's how you can get involved:
+
+1. Fork this repository.
+2. Create a new branch for your contribution: `git checkout -b your-branch-name`.
+3. Make your changes and improvements in the branch.
+4. Make sure your changes do not break any existing functionality.
+5. Add and commit your changes: `git commit -am 'Description of the changes'`.
+6. Push your branch to the remote repository: `git push origin your-branch-name`.
+7. Open a pull request explaining your changes and why they should be accepted.
+8. We'll be happy to review your request and merge your changes if they meet the project requirements.
+
+
+## Issue Reporting
+
+If you encounter any issues or have suggestions for improvements, please open an issue in the [issue tracker](https://github.com/JoseAlbDR/worldwide/issues) of the repository.
+
+We greatly appreciate your contribution and look forward to working with you to improve this project.
+
 
 
