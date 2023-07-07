@@ -22,7 +22,7 @@ Below are some screenshots of the application:
 
 ## Features
 
-✅ User registration and authentication.  
+✅ Fake user Authentication 
 ✅ Secure navigation through protected routes.  
 ✅ Homepage with an overview of the application and a link to log in.  
 ✅ Pricing page showing available plans.  
@@ -31,7 +31,7 @@ Below are some screenshots of the application:
 ✅ Interactive map displaying visited cities and allowing the addition of new cities by clicking on the map.  
 ✅ Search bar to search for specific cities on the map.  
 ✅ List of visited cities with an option to delete cities.  
-✅ List of visited countries based on registered cities.  
+✅ List of unique visited countries based on registered cities.  
 ✅ Form to add new cities with name, date, notes, and automatic location based on the user's position on the map.
 
 ## Project Structure
@@ -45,7 +45,6 @@ The project is structured as follows:
   - `pages/`: Contains the main pages of the application.
   - `hooks/`: Contains custom hooks used in the application.
   - `utils/`: Contains additional utilities used in the application.
-- `screenshots/`: Contains screenshots of the application.
 
 ## Dependencies
 
