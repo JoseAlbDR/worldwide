@@ -6,7 +6,9 @@ import {
   useCallback,
 } from "react";
 
-const BASE_URL = "http://localhost:8000";
+const BASE_URL = "http://localhost:8888/";
+
+// http://localhost:8888/.netlify/functions/addCity
 
 // 1) Create context
 const CityContext = createContext();
@@ -103,7 +105,7 @@ function CityProvider({ children }) {
   async function saveCity(newCity) {
     try {
       dispatch({ type: "loading" });
-      const res = await fetch(`${BASE_URL}/cities/`, {
+      const res = await fetch(`${BASE_URL}.netlify/functions/addCity`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
