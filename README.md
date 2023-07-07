@@ -152,5 +152,9 @@ If you encounter any issues or have suggestions for improvements, please open an
 
 We greatly appreciate your contribution and look forward to working with you to improve this project.
 
+## Credits
 
+Original project from [Ultimate React Course](https://www.udemy.com/course/the-ultimate-react-course) by [Jonas Schmedtmann](https://codingheroes.io/)
+Repo of the original project: [Worldwise Original Repo](https://github.com/jonasschmedtmann/ultimate-react-course/tree/main/11-worldwise/final)
+I adapted and updated this project only for learning pourposes.
 
