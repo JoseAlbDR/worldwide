@@ -108,7 +108,7 @@ Make sure you have Node.js and npm installed on your machine.
 
 The application can be deployed using Netlify. Make sure to set up the required environment variables in the Netlify project settings.
 
-    ```
+    ```bash
     FAUNA_API_KEY=<FAUNADB_API_KEY>
     OW_API_KEY=<OPENWEATHER_API_KEY>
 
