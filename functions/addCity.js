@@ -1,7 +1,7 @@
 const FaunaService = require("@brianmmdev/faunaservice");
 
 exports.handler = async (event, contest) => {
-  const service = new FaunaService(process.env.FAUNA_KEY);
+  const service = new FaunaService(process.env.FAUNA_API_KEY);
 
   const city = JSON.parse(event.body);
 
