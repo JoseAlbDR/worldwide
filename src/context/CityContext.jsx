@@ -72,7 +72,7 @@ function CityProvider({ children }) {
     async function listCities() {
       try {
         dispatch({ type: "loading" });
-        const res = await fetch(`${BASE_URL}/cities`);
+        const res = await fetch(`${BASE_URL}/listCities`);
         if (!res.ok) throw new Error("Error fetching data.");
 
         const citiesData = await res.json();
