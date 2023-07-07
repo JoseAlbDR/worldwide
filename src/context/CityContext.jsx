@@ -69,7 +69,7 @@ function CityProvider({ children }) {
 
   const { cities, isLoading, currentCity, error } = state;
   useEffect(() => {
-    async function getData() {
+    async function listCities() {
       try {
         dispatch({ type: "loading" });
         const res = await fetch(`${BASE_URL}/cities`);
@@ -82,7 +82,7 @@ function CityProvider({ children }) {
         dispatch({ type: "error", payload: err.message });
       }
     }
-    getData();
+    listCities();
   }, []);
 
   const getCity = useCallback(
