@@ -82,8 +82,8 @@ Make sure you have Node.js and npm installed on your machine.
 
 3. Install the dependencies:
 
-  ```bash
-  npm install
+    ```bash
+    npm install
 
 ### Local Development
 
@@ -91,13 +91,13 @@ Make sure you have Node.js and npm installed on your machine.
 
 1. Start the JSON server for simulating the REST API:
 
-  ```bash
-  npm run server
+    ```bash
+    npm run server
 
 2. In a separate terminal, start the development server:
 
-  ```bash
-  npm run dev
+    ```bash
+    npm run dev
 
 3. Open your browser and visit http://localhost:3000 to see the application running.
 
@@ -108,18 +108,18 @@ Make sure you have Node.js and npm installed on your machine.
 
 The application can be deployed using Netlify. Make sure to set up the required environment variables in the Netlify project settings.
 
-  ```javascript
-  FAUNA_API_KEY=<FAUNADB_API_KEY>
-  OW_API_KEY=<OPENWEATHER_API_KEY>
+    ```javascript
+    FAUNA_API_KEY=<FAUNADB_API_KEY>
+    OW_API_KEY=<OPENWEATHER_API_KEY>
 
 1. Build the project:
 
-  ```bash
-  npm run build
+    ```bash
+    npm run build
 
 2. Deploy the generated dist/ directory using Netlify CLI or by linking your repository to a Netlify project.
 
-  ```bash
-netlify deploy --prod
+    ```bash
+    netlify deploy --prod
 
 
