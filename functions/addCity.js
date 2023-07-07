@@ -11,6 +11,7 @@ exports.handler = async (event, contest) => {
     headers: {
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Headers": "Authorization, Content-Type",
+      "Access-Control-Allow-Methods": "POST",
       "Content-Type": "application/json",
     },
     body: JSON.stringify(cityCreated),
