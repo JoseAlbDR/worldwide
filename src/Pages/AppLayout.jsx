@@ -1,4 +1,5 @@
 import Map from "../components/Map";
+import SearchBar from "../components/SearchBar";
 import Sidebar from "../components/Sidebar";
 import User from "../components/User";
 import { useAuth } from "../context/FakeAuthContext";
@@ -10,6 +11,7 @@ function AppLayout() {
   return (
     <div className={styles.app}>
       <Sidebar />
+      <SearchBar />
       <Map />
       <User />
     </div>
