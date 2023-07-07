@@ -18,15 +18,10 @@ function City() {
   const { isLoading, getCity, currentCity } = useCities();
 
   const { id } = useParams();
-  const [searchParams, setSearchParams] = useSearchParams();
-  const navigate = useNavigate();
-
-  const lat = searchParams.get("lat");
-  const lng = searchParams.get("lng");
 
   useEffect(() => {
     getCity(id);
-  }, [id]);
+  }, [id, getCity]);
 
   const { cityName, date, emoji, notes } = currentCity;
 
