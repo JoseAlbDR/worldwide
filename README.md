@@ -62,6 +62,18 @@ The project uses the following npm dependencies:
 - `react-datepicker`: Date picker component used in the application's form.
 - `react-router-dom`: Library for application routing using React's component-based approach.
 
+# Serverless API Functions
+
+The application makes use of Serverless API functions to handle certain functionalities. These functions are responsible for interacting with the database and retrieving data from external APIs. Here is an overview of the available functions:
+
+- **Create City:** Creates a new city record in the database.
+- **Delete City:** Deletes a city record from the database.
+- **Get City by ID:** Retrieves a city record from the database based on its ID.
+- **List Cities:** Retrieves a list of all cities from the database.
+- **Get City Coordinates:** Retrieves the coordinates (latitude and longitude) of a city using the OpenWeatherMap API.
+
+These functions are implemented using Netlify Functions and are triggered by specific API endpoints. They provide the necessary backend functionality for the application to manage city data and retrieve additional information.
+
 ## Getting Started
 
 ### Prerequisites
@@ -106,7 +118,7 @@ Make sure you have Node.js and npm installed on your machine.
 
 #### In branch netlify
 
-The application can be deployed using Netlify. Make sure to set up the required environment variables in the Netlify project settings.
+The application can be deployed using Netlify. Make sure to set up the required environment variables in the Netlify project settings and in .env file.
 
     FAUNA_API_KEY=<FAUNADB_API_KEY>
     OW_API_KEY=<OPENWEATHER_API_KEY>
