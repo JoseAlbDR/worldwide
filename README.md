@@ -24,7 +24,7 @@ Below are some screenshots of the application:
 
 ## Features
 
-✅ Fake user Authentication 
+✅ Fake user Authentication
 ✅ Secure navigation through protected routes.  
 ✅ Homepage with an overview of the application and a link to log in.  
 ✅ Pricing page showing available plans.  
