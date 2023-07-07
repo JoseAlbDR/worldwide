@@ -91,7 +91,7 @@ function CityProvider({ children }) {
 
       try {
         dispatch({ type: "loading" });
-        const res = await fetch(`${BASE_URL}/getCity/?id=${id}`);
+        const res = await fetch(`${BASE_URL}/getCity?id=${id}`);
         if (!res.ok) throw new Error("Error fetching city.");
         const city = await res.json();
         dispatch({ type: "currentCity/changed", payload: city });
@@ -126,7 +126,7 @@ function CityProvider({ children }) {
   async function deleteCity(id) {
     try {
       dispatch({ type: "loading" });
-      const res = await fetch(`${BASE_URL}/cities/${id}`, {
+      const res = await fetch(`${BASE_URL}/deleteCity?id=${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
