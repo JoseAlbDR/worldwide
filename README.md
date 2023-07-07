@@ -61,7 +61,7 @@ The project uses the following npm dependencies:
 - `react-datepicker`: Date picker component used in the application's form.
 - `react-router-dom`: Library for application routing using React's component-based approach.
 
-# Serverless API Functions
+## Serverless API Functions
 
 The application makes use of Serverless API functions to handle certain functionalities. These functions are responsible for interacting with the database and retrieving data from external APIs. Here is an overview of the available functions:
 
@@ -131,5 +131,26 @@ The application can be deployed using Netlify. Make sure to set up the required 
 
     ```bash
     netlify deploy --prod
+
+## Contribution
+
+If you want to contribute to this project here's how you can get involved:
+
+1. Fork this repository.
+2. Create a new branch for your contribution: `git checkout -b your-branch-name`.
+3. Make your changes and improvements in the branch.
+4. Make sure your changes do not break any existing functionality.
+5. Add and commit your changes: `git commit -am 'Description of the changes'`.
+6. Push your branch to the remote repository: `git push origin your-branch-name`.
+7. Open a pull request explaining your changes and why they should be accepted.
+8. We'll be happy to review your request and merge your changes if they meet the project requirements.
+
+
+## Issue Reporting
+
+If you encounter any issues or have suggestions for improvements, please open an issue in the [issue tracker](https://github.com/JoseAlbDR/worldwide/issues) of the repository.
+
+We greatly appreciate your contribution and look forward to working with you to improve this project.
+
 
 
