@@ -16,6 +16,7 @@ const initialState = {
   isLoading: false,
   currentCity: {},
   error: "",
+  isError: false,
 };
 
 function reducer(state, action) {
@@ -24,6 +25,7 @@ function reducer(state, action) {
       return {
         ...state,
         isLoading: true,
+        isError: false,
       };
     case "cities/loaded":
       return {
@@ -56,6 +58,19 @@ function reducer(state, action) {
         ...state,
         error: action.payload,
         isLoading: false,
+        isError: true,
+      };
+    case "clearError":
+      return {
+        ...state,
+        error: "",
+        isLoading: false,
+        isError: false,
+      };
+    case "notLoading":
+      return {
+        ...state,
+        isLoading: false,
       };
     default:
       throw new Error("Unknown action type");
@@ -65,7 +80,7 @@ function reducer(state, action) {
 function CityProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const { cities, isLoading, currentCity, error } = state;
+  const { cities, isLoading, currentCity, error, isError } = state;
   useEffect(() => {
     async function listCities() {
       try {
@@ -84,13 +99,16 @@ function CityProvider({ children }) {
 
   async function searchCity(query) {
     try {
+      dispatch({ type: "loading" });
       const res = await fetch(`${DEV_BASE_URL}/searchCity?name=${query}`);
-      if (!res.ok) throw new Error("Error fetching city.");
-      const coords = await res.json();
-      return coords;
+      const data = await res.json();
+      if (data.error) throw new Error(data.error);
+      return data;
     } catch (err) {
       console.error(err);
       dispatch({ type: "error", payload: err.message });
+    } finally {
+      dispatch({ type: "notLoading" });
     }
   }
 
@@ -160,6 +178,8 @@ function CityProvider({ children }) {
         deleteCity,
         searchCity,
         error,
+        isError,
+        dispatch,
       }}
     >
       {children}
