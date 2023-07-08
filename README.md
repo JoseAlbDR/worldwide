@@ -1,6 +1,6 @@
-# worldwide
-SPA to save your visited countries done with React
 # WorldWise
+
+SPA to save your visited countries done with React
 
 <p align="center">
   <img src="https://github.com/JoseAlbDR/worldwide/blob/main/public/logo.png" alt="WorldWise Logo">
