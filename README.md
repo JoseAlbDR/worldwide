@@ -1,6 +1,6 @@
-# worldwide
-SPA to save your visited countries done with React
 # WorldWise
+
+SPA to save your visited countries done with React
 
 <p align="center">
   <img src="https://github.com/JoseAlbDR/worldwide/blob/main/public/logo.png" alt="WorldWise Logo">
@@ -21,6 +21,10 @@ Below are some screenshots of the application:
   <img src="https://github.com/JoseAlbDR/worldwide/blob/netlify/public/WorldWise2.PNG" alt="Worldwise" width="400" height="200">
   <img src="https://github.com/JoseAlbDR/worldwide/blob/netlify/public/WorldWise3.PNG" alt="Worldwise" width="400" height="200">
 </p>
+
+## Demo Video
+
+https://github.com/JoseAlbDR/worldwise/assets/128265706/4f89907d-d0c5-4434-8349-796a3de73984
 
 ## Features
 
